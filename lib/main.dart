@@ -1,7 +1,6 @@
-import 'package:flame/game.dart';
-import 'package:flutter/widgets.dart';
+import 'package:prisonbreak_main_game/laser_minigame/main_menu.dart';
+import 'package:flutter/material.dart';
 
 void main() {
-  final game = FlameGame();
-  runApp(GameWidget(game: game));
+  runApp(const MaterialApp(home: MainMenu()));
 }
