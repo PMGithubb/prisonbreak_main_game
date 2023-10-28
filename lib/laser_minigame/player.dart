@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+//import 'player_button.dart';
 
 class Player extends SpriteComponent with KeyboardHandler, HasGameRef {
   Player({super.sprite}) {
@@ -6,14 +7,15 @@ class Player extends SpriteComponent with KeyboardHandler, HasGameRef {
     anchor = Anchor.center;
     position = Vector2(100, 250);
   }
-  // var x_axisinput = 0.0;
+  var xAxisinput = 0.0;
 
-  // @override
-  // void update(double dt) {
-  //   //7000: implement update
-  //   x += x_axisinput;
-  //   super.update(dt);
-  // }
+  @override
+  void update(double dt) {
+    //7000: implement update
+    x += xAxisinput;
+    super.update(dt);
+  }
+  //var xAxisInput = PlayerButtonState()
 
   // @override
   // //change to if button pressed
