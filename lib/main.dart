@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
                   debugPrint('The image button has been tapped');
                 },
                 child: Image.asset(
-                  'assets/images/Square Buttons/Play Square Button.png',
+                  'assets/images/square_buttons/PlaySquareButton.png',
                 ),
               ),
             ),
@@ -49,7 +49,7 @@ class OpeningScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        Center(child: Image.asset("assets/possible_background.png"))
+        Center(child: Image.asset("assets/possible_background.png")),
       ]),
     );
   }
