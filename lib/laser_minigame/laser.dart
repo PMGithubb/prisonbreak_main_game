@@ -1,3 +1,4 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:prisonbreak_main_game/laser_minigame/laser_game.dart';
 
@@ -5,6 +6,7 @@ class Laser extends SpriteComponent with HasGameRef<LaserGame> {
   Laser({super.sprite}) {
     position = Vector2(1500, 250);
     size = Vector2(90, 90);
+    add(RectangleHitbox.relative(Vector2(0.1, 1), parentSize: Vector2(90, 90)));
   }
 
   double acceleration = 0.0;
@@ -22,7 +24,11 @@ class Laser extends SpriteComponent with HasGameRef<LaserGame> {
     450.0,
     500.0,
     550.0,
-    600.0
+    600.0,
+    650.0,
+    700.0,
+    750.0,
+    800.0
   ];
 
   @override

@@ -71,7 +71,7 @@ flutter:
     - assets/images/prison_yard.png
     - assets/images/scroll.png
     - assets/images/sprite_final.png
-    - assets/images/square_buttons/PlaySquareButton.png
+    - assets/images/square_buttons/
     - assets/possible_background.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
