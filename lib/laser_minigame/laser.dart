@@ -10,7 +10,7 @@ class Laser extends SpriteComponent with HasGameRef<LaserGame> {
   }
 
   double acceleration = 0.0;
-  double speed = 3.0;
+  double speed = 5.0;
   List coordinatesBin = [
     25.0,
     50.0,
