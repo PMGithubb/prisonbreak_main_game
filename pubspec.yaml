@@ -73,6 +73,7 @@ flutter:
     - assets/images/sprite_final.png
     - assets/images/Square Buttons/Play Square Button.png
     - assets/possible_background.png
+    - assets/images/Square Buttons/Next Square Button.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
