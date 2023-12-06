@@ -38,20 +38,22 @@ class PauseMenu extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: ElevatedButton(
-                    onPressed: () {
-                      gameRef.resumeEngine();
-                      gameRef.overlays.remove(PauseMenu.ID);
-                      gameRef.overlays.add(PauseButton.ID);
-                    },
-                    style: const ButtonStyle(alignment: Alignment(0, 0)),
-                    child: const Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Text(
-                        'Resume',
-                        style: TextStyle(fontSize: 25),
-                      ),
-                    ),
-                  ),
+                      onPressed: () {
+                        gameRef.resumeEngine();
+                        gameRef.overlays.remove(PauseMenu.ID);
+                        gameRef.overlays.add(PauseButton.ID);
+                      },
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                200.0), // Adjust the border radius
+                          ),
+                          fixedSize: const Size(130, 130),
+                          foregroundColor: const Color.fromARGB(0, 0, 0, 0),
+                          shadowColor: const Color.fromARGB(0, 0, 0, 0),
+                          backgroundColor: const Color.fromARGB(0, 0, 0, 0)),
+                      child: Image.asset(
+                          "assets/images/square_buttons/PlaySquareButton.png")),
                 )
               ],
             ),
