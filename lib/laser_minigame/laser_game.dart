@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:prisonbreak_main_game/laser_minigame/gameover_menu.dart';
-import 'package:prisonbreak_main_game/pause_button.dart';
+import 'package:prisonbreak_main_game/laser_minigame/pause_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:prisonbreak_main_game/pause_menu.dart';
 //import 'package:prisonbreak_main_game/laser_minigame/player_button.dart';

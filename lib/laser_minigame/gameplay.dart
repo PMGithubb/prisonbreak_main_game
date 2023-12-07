@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/laser_minigame/gameover_menu.dart';
-import 'package:prisonbreak_main_game/pause_button.dart';
+import 'package:prisonbreak_main_game/laser_minigame/pause_button.dart';
 import 'package:prisonbreak_main_game/laser_minigame/laser_game.dart';
 import 'package:flame/game.dart';
 import 'package:prisonbreak_main_game/laser_minigame/player_button.dart';
-import 'package:prisonbreak_main_game/pause_menu.dart';
+import 'package:prisonbreak_main_game/laser_minigame/pause_menu.dart';
 
 class GamePlay extends StatelessWidget {
   const GamePlay({Key? key}) : super(key: key);

@@ -52,26 +52,56 @@ class GameOverMenu extends StatelessWidget {
                             color: Color.fromARGB(255, 255, 255, 255)),
                       )
                     ])),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: ElevatedButton(
-                      onPressed: () {
-                        gameRef.overlays.remove(GameOverMenu.ID);
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const MainMenu(),
-                        ));
-                      },
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                200.0), // Adjust the border radius
-                          ),
-                          fixedSize: const Size(130, 130),
-                          foregroundColor: const Color.fromARGB(0, 0, 0, 0),
-                          shadowColor: const Color.fromARGB(0, 0, 0, 0),
-                          backgroundColor: const Color.fromARGB(0, 0, 0, 0)),
-                      child: Image.asset(
-                          "assets/images/square_buttons/ReturnSquareButton.png")),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            gameRef.overlays.remove(GameOverMenu.ID);
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                              builder: (context) => const MainMenu(),
+                            ));
+                          },
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    200.0), // Adjust the border radius
+                              ),
+                              fixedSize: const Size(130, 130),
+                              foregroundColor: const Color.fromARGB(0, 0, 0, 0),
+                              shadowColor: const Color.fromARGB(0, 0, 0, 0),
+                              backgroundColor:
+                                  const Color.fromARGB(0, 0, 0, 0)),
+                          child: Image.asset(
+                              "assets/images/square_buttons/ReturnSquareButton.png")),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            gameRef.overlays.remove(GameOverMenu.ID);
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                              builder: (context) => const MainMenu(),
+                            ));
+                          },
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    200.0), // Adjust the border radius
+                              ),
+                              fixedSize: const Size(130, 130),
+                              foregroundColor: const Color.fromARGB(0, 0, 0, 0),
+                              shadowColor: const Color.fromARGB(0, 0, 0, 0),
+                              backgroundColor:
+                                  const Color.fromARGB(0, 0, 0, 0)),
+                          child: Image.asset(
+                              "assets/images/square_buttons/VSquareButton.png")),
+                    )
+                  ],
                 )
               ],
             ),

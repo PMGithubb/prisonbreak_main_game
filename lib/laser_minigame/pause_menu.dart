@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/laser_minigame/laser_game.dart';
-import 'package:prisonbreak_main_game/pause_button.dart';
+import 'package:prisonbreak_main_game/laser_minigame/pause_button.dart';
 
 class PauseMenu extends StatelessWidget {
   static const String ID = 'PauseMenu';
