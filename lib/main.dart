@@ -25,9 +25,9 @@ class GamePageView extends StatelessWidget {
     return PageView(
       children: [
         GameScreen(
-          backgroundImage: 'initial_cell.png',
-          characterImage: 'sprite_final.png',
-          scrollImage: 'scroll.png',
+          backgroundImage: 'assets/images/initial_cell.png',
+          characterImage: 'assets/images/sprite_final.png',
+          scrollImage: 'assets/images/scroll.png',
           questions: [
             Question(
               question: "What has many keys but can't unlock a single door?",
@@ -45,45 +45,57 @@ class GamePageView extends StatelessWidget {
               correctAnswer: 2,
             ),
             Question(
-              question: "What comes once in a minute, twice in a moment, but never in a thousand years?",
-              options: ['The word "escape"', 'The letter "M"', 'Prison Sentence', 'Prison Break'],
+              question:
+                  "What comes once in a minute, twice in a moment, but never in a thousand years?",
+              options: [
+                'The word "escape"',
+                'The letter "M"',
+                'Prison Sentence',
+                'Prison Break'
+              ],
               correctAnswer: 1,
             ),
             Question(
-              question: "I can fly without wings, cry without eyes. Wherever I go, darkness dies, What am I?",
+              question:
+                  "I can fly without wings, cry without eyes. Wherever I go, darkness dies, What am I?",
               options: ['A Bat', 'A Bird', 'A Flashlight', 'A Jail Break Plan'],
               correctAnswer: 2,
             )
-            
           ],
         ),
         GameScreen(
-          backgroundImage: 'prison_yard.png', // Replace with the path to your new background image
-          characterImage: 'sprite_final.png',
-          scrollImage: 'scroll.png',
+          backgroundImage:
+              'assets/images/prison_yard.png', // Replace with the path to your new background image
+          characterImage: 'assets/images/sprite_final.png',
+          scrollImage: 'assets/images/scroll.png',
           questions: [
             Question(
-              question: "I'm a place with walls so thick, where inmates stay so quiet, so quick. Bars surround, but no keys in sight, In the day I'm filled with light. What am I?",
+              question:
+                  "I'm a place with walls so thick, where inmates stay so quiet, so quick. Bars surround, but no keys in sight, In the day I'm filled with light. What am I?",
               options: ['Library', 'Prison', 'Classroom', 'Courtyard'],
               correctAnswer: 1,
             ),
             Question(
-              question: "I have teeth but never eat, Iron bars, a grim retreat. No windows here, just solitude, Inside my walls, no gratitude. What am I?",
+              question:
+                  "I have teeth but never eat, Iron bars, a grim retreat. No windows here, just solitude, Inside my walls, no gratitude. What am I?",
               options: ['Dungeon', 'Cafeteria', 'Jail', 'Museum'],
               correctAnswer: 2,
             ),
-           Question(
-              question: "Tick tock, goes the clock, Serving time, a heavy dock. In stripes or orange, I am found, In my grasp, freedom's bound. What am I?",
+            Question(
+              question:
+                  "Tick tock, goes the clock, Serving time, a heavy dock. In stripes or orange, I am found, In my grasp, freedom's bound. What am I?",
               options: ['Clock', 'Calendar', 'Watchtower', 'Inmate'],
               correctAnswer: 3,
             ),
-             Question(
-              question: "I stand tall with bars of steel, Watchful eyes, my purpose real. In the night or morning light, I keep watch, out of sight. What am I?",
+            Question(
+              question:
+                  "I stand tall with bars of steel, Watchful eyes, my purpose real. In the night or morning light, I keep watch, out of sight. What am I?",
               options: ['Sentry', 'Guard Tower', 'Warden', 'Fence'],
               correctAnswer: 1,
             ),
-             Question(
-              question: "Wake up, eat, and then back in, A routine life within. Courtyard, cells, and metal bed, Where am I, its often said. What am I?",
+            Question(
+              question:
+                  "Wake up, eat, and then back in, A routine life within. Courtyard, cells, and metal bed, Where am I, its often said. What am I?",
               options: ['Home', 'Prison Yard', 'School', 'Park'],
               correctAnswer: 1,
             ),
@@ -101,7 +113,8 @@ class GameScreen extends StatefulWidget {
   final String scrollImage;
   final List<Question> questions;
 
-  const GameScreen({super.key, 
+  const GameScreen({
+    super.key,
     required this.backgroundImage,
     required this.characterImage,
     required this.scrollImage,
@@ -121,14 +134,15 @@ class _GameScreenState extends State<GameScreen> {
       body: Stack(
         children: [
           // Background Image
-          Image.network(widget.backgroundImage),
+          Image.asset(widget.backgroundImage),
 
           // Character at bottom left
           Positioned(
-            left: 16,
-            bottom: 16,
-            child: Image.network(widget.characterImage),
-          ),
+              left: 16,
+              bottom: 16,
+              //child: Image.network(widget.characterImage),
+              child:
+                  Image.asset(widget.characterImage, width: 450, height: 250)),
 
           // Scroll Image
           Positioned(
@@ -158,7 +172,8 @@ class _GameScreenState extends State<GameScreen> {
                     // Question
                     Text(
                       widget.questions[currentQuestionIndex].question,
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
 
@@ -177,7 +192,8 @@ class _GameScreenState extends State<GameScreen> {
                               color: _getOptionColor(index),
                             ),
                             child: Text(
-                              widget.questions[currentQuestionIndex].options[index],
+                              widget.questions[currentQuestionIndex]
+                                  .options[index],
                               style: const TextStyle(fontSize: 16),
                             ),
                           ),
@@ -196,7 +212,9 @@ class _GameScreenState extends State<GameScreen> {
 
   Color _getOptionColor(int index) {
     if (widget.questions[currentQuestionIndex].userAnswer == index) {
-      return widget.questions[currentQuestionIndex].isCorrect ? Colors.green : Colors.red;
+      return widget.questions[currentQuestionIndex].isCorrect
+          ? Colors.green
+          : Colors.red;
     }
     return Colors.white;
   }
@@ -204,7 +222,8 @@ class _GameScreenState extends State<GameScreen> {
   void checkAnswer(int selectedOption) {
     setState(() {
       widget.questions[currentQuestionIndex].userAnswer = selectedOption;
-      if (selectedOption == widget.questions[currentQuestionIndex].correctAnswer) {
+      if (selectedOption ==
+          widget.questions[currentQuestionIndex].correctAnswer) {
         widget.questions[currentQuestionIndex].isCorrect = true;
       } else {
         widget.questions[currentQuestionIndex].isCorrect = false;
