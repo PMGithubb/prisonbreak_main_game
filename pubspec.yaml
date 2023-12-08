@@ -74,6 +74,9 @@ flutter:
     - assets/images/Square Buttons/Play Square Button.png
     - assets/possible_background.png
     - assets/images/Square Buttons/Next Square Button.png
+    - assets/images/Square Buttons/Return Square Button.png
+    - assets/bubble.jpg
+    - assets/bubble2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
