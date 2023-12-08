@@ -1,3 +1,3 @@
 
-import 'package:flame/game.dart';
-class MyGame extends FlameGame()
+// import 'package:flame/game.dart';
+// class MyGame extends FlameGame()
