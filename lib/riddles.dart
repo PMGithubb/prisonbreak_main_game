@@ -108,7 +108,7 @@ class GameScreen extends StatefulWidget {
   final String scrollImage;
   final List<Question> questions;
 
-  const GameScreen({
+  GameScreen({
     super.key,
     required this.backgroundImage,
     required this.characterImage,
@@ -122,6 +122,7 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   int currentQuestionIndex = 0;
+  int game_score = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +136,6 @@ class _GameScreenState extends State<GameScreen> {
           Positioned(
               left: 16,
               bottom: 16,
-              //child: Image.network(widget.characterImage),
               child:
                   Image.asset(widget.characterImage, width: 450, height: 250)),
 
@@ -200,6 +200,14 @@ class _GameScreenState extends State<GameScreen> {
               ),
             ),
           ),
+          Positioned(
+            top: 20,
+            left: 20,
+            child: Text(
+              "Score: $game_score",
+              style: const TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          )
         ],
       ),
     );
@@ -207,9 +215,12 @@ class _GameScreenState extends State<GameScreen> {
 
   Color _getOptionColor(int index) {
     if (widget.questions[currentQuestionIndex].userAnswer == index) {
-      return widget.questions[currentQuestionIndex].isCorrect
-          ? Colors.green
-          : Colors.red;
+      if (widget.questions[currentQuestionIndex].isCorrect) {
+        game_score += 10;
+        return Colors.green;
+      } else {
+        return Colors.red;
+      }
     }
     return Colors.white;
   }

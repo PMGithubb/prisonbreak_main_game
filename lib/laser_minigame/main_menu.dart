@@ -39,7 +39,7 @@ class MainMenu extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.all(30.0),
                         child: Text(
-                          "The prison guards saw you. Dodge their lasers while getting to the other side to keep the maximum number of points!",
+                          "Got out of prison, but the guards saw you. Dodge their lasers while getting to the other side to keep the maximum number of points!",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 20,
