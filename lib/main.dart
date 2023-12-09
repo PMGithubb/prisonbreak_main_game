@@ -1,12 +1,11 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 void main() => runApp(
     MaterialApp(home: MyApp(),
+
     theme: ThemeData(scaffoldBackgroundColor: const Color(0xFF5C339B))));
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -146,66 +145,65 @@ class successClosingScreen extends StatelessWidget{
     var height = screenSize.height;
     return Scaffold(
       body: Stack(
-        children:[
+        children: [
           Center(
-              child: Image.asset(
-                  "assets/images/escape_success.jpg"
-              )),
-
-            Align(
-              alignment: Alignment.bottomRight,
-              child: SizedBox(
-               width: 130,
-               height: 130,
-               child: GestureDetector(
-                onTap: (){
-                 Navigator.push(
-    context, MaterialPageRoute(builder: (context)=> failureClosingScreen()));
-                      },
+            child: Image.asset("assets/images/escape_success.jpg")
+          ),
+        Align(
+            alignment: Alignment.bottomRight,
+            child: SizedBox(
+                width: 130,
+                height: 130,
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context)=> failureClosingScreen()));
+                  },
                   child: Image.asset(
                     "assets/images/Square Buttons/Next Square Button.png",
                   ),
-              )
+                )
             )
-          ),
-          Positioned(
+        ),
+        Positioned(
             right: 310,
-              top: 150,
-              child: SizedBox(
-                  width: 130,
-                  height: 130,
-                  child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => MyApp()));
-                      },
-    child: Image.asset(
-    "assets/images/Square Buttons/Return Square Button.png"
-    ))
-              )),
-          Align(
+            top: 150,
+            child: SizedBox(
+                width: 130,
+                height: 130,
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => MyApp()));
+                    },
+                    child: Image.asset(
+                        "assets/images/Square Buttons/Return Square Button.png"
+                    ))
+            )),
+        Align(
             alignment: Alignment.topLeft,
             child: Text(
-              style: TextStyle(fontFamily: "Good Timing", fontSize: 40, color: Colors.white),
-              "Points: ${points}"
+                style: TextStyle(fontFamily: "Good Timing", fontSize: 40, color: Colors.white),
+                "Points: ${points}"
             )
-          ),
-          Positioned(
+        ),
+        Positioned(
             right:120,
             top:50,
             child: Text(
-              "You escaped the prison!",
-              style: TextStyle(fontFamily: "Eordeoghlakat", fontSize: 62, color: Colors.white)
+                "You escaped the prison!",
+                style: TextStyle(fontFamily: "Eordeoghlakat", fontSize: 62, color: Colors.white)
             )
-          )
-       ]
-      ),
+        )
+        ]
+    ),
     );
   }
 }
+
 class failureClosingScreen extends StatelessWidget{
-  @override
-  Widget build(BuildContext context){
+@override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children:[
@@ -238,6 +236,7 @@ class failureClosingScreen extends StatelessWidget{
 
         ]
       ),
+
     );
   }
 }
