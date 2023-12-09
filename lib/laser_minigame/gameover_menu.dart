@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/laser_minigame/laser_game.dart';
 import 'package:prisonbreak_main_game/laser_minigame/main_menu.dart';
+import 'package:prisonbreak_main_game/main.dart';
 
 class GameOverMenu extends StatelessWidget {
   static const String ID = 'GameOverMenu';
@@ -85,7 +86,7 @@ class GameOverMenu extends StatelessWidget {
                             gameRef.overlays.remove(GameOverMenu.ID);
                             Navigator.of(context)
                                 .pushReplacement(MaterialPageRoute(
-                              builder: (context) => const MainMenu(),
+                              builder: (context) => successClosingScreen(),
                             ));
                           },
                           style: ElevatedButton.styleFrom(

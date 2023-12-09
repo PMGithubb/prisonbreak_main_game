@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/laser_minigame/main_menu.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: GamePageView(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(
+//       home: GamePageView(),
+//     );
+//   }
+// }
 
 class GamePageView extends StatelessWidget {
   const GamePageView({super.key});
