@@ -62,18 +62,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/correct_multiplechoice.png
-    - assets/images/escape_failed.jpg
-    - assets/images/escape_success.jpg
-    - assets/images/homescreen.jpg
-    - assets/images/incorrect_multiplechoice.png
-    - assets/images/laser.png
-    - assets/images/multiple_choice.png
-    - assets/images/prison_yard.png
-    - assets/images/scroll.png
-    - assets/images/sprite_final.png
+    - assets/images/
     - assets/images/square_buttons/
-    - assets/possible_background.png
+    - assets/images/large_buttons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -86,7 +77,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+   # fonts:
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
