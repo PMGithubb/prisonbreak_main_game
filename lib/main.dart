@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 
 void main() => runApp(
     MaterialApp(home: MyApp(),
-    theme: new ThemeData(scaffoldBackgroundColor: const Color(0xFF5C339B))));
+    theme: ThemeData(scaffoldBackgroundColor: const Color(0xFF5C339B))));
 
 class MyApp extends StatelessWidget{
   @override
@@ -19,7 +19,9 @@ class MyApp extends StatelessWidget{
                width:1000,
              )
          ),
-       Center(
+       Positioned(
+         right: 250,
+         top: 200,
         child: SizedBox(
           width: 300,
           height: 100,
@@ -38,11 +40,11 @@ class MyApp extends StatelessWidget{
       ),
     ),
     Positioned(
-      right: 281,
+      right: 150,
       top: 50,
       child: Text(
         "Prison Escape",
-        style: TextStyle(fontSize: 50, color: Colors.white)
+        style: TextStyle(fontFamily: "Eordeoghlakat", fontSize: 100, color: Colors.white)
       )
     )
     ],
@@ -104,11 +106,15 @@ class OpeningScreen extends StatelessWidget{
           right: 100,
           top: 100,
           child: Container(
-            color: Colors.black.withOpacity(0.5),
             padding: EdgeInsets.all(5),
             width: 400,
-            child: Expanded(
-            child: Text(
+            decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+              color: Colors.black.withOpacity(0.5),
+
+            ),
+            child: const Expanded(
+              child: Text(
               "In this game, there are 2 levels. The first level has a question and "
                   "answer section, as well as a minigame. The second section "
                   "has a harder question and answer section compared to the first level. "
@@ -116,7 +122,7 @@ class OpeningScreen extends StatelessWidget{
                   "by answering questions correctly, and playing the minigame. A minimum "
                   "of 100 points must be achieved to successfully obtain the key to "
                   "escape the prison.",
-              style: TextStyle(fontSize: 15, color: Colors.white),
+              style: TextStyle(fontFamily: "Good Timing", fontSize: 15, color: Colors.white),
               softWrap: true,
               overflow: TextOverflow.visible,
             ))
@@ -180,16 +186,16 @@ class successClosingScreen extends StatelessWidget{
           Align(
             alignment: Alignment.topLeft,
             child: Text(
-              style: TextStyle(fontSize: 50, color: Colors.white),
+              style: TextStyle(fontFamily: "Good Timing", fontSize: 40, color: Colors.white),
               "Points: ${points}"
             )
           ),
           Positioned(
-            right:200,
+            right:120,
             top:50,
             child: Text(
               "You escaped the prison!",
-              style: TextStyle(fontSize: 50, color: Colors.white)
+              style: TextStyle(fontFamily: "Eordeoghlakat", fontSize: 62, color: Colors.white)
             )
           )
        ]
@@ -201,32 +207,35 @@ class failureClosingScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: Stack(
+      body: Column(
         children:[
-          Positioned(
-            right:400,
-            top: 50,
+          Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                  style: TextStyle(fontFamily: "Good Timing", fontSize: 40, color: Colors.black),
+
+                  "Points: ${points}"
+              )
+          ),
+          Align(
+            alignment: Alignment.topCenter,
             child: Text(
                 "Try Again..",
-                 style: TextStyle(fontSize: 50)),
+                 style: TextStyle(fontFamily: "Eordeoghlakat", fontSize: 100)),
           ),
-     Center(
+          Positioned(
+            right: 170,
+        top: 330,
         child: SizedBox(
-     width: 130,
-       height: 130,
+     width: 120,
+       height: 120,
          child: GestureDetector(
           onTap: () {
        Navigator.push(
        context, MaterialPageRoute(builder: (context) => MyApp()));
     },
          child: Image.asset("assets/images/Square Buttons/Return Square Button.png")))),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              style: TextStyle(fontSize: 50, color: Colors.white),
-              "Points: ${points}"
-            )
-          )
+
         ]
       ),
     );
