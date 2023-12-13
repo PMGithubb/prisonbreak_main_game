@@ -1,5 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/laser_minigame/gameover_menu.dart';
 import 'package:prisonbreak_main_game/laser_minigame/pause_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -28,8 +29,14 @@ class LaserGame extends FlameGame with HasCollisionDetection {
     score = 100;
     prefs = await SharedPreferences.getInstance();
     //prefs.setInt("highScore", 0);
-    scoreText = TextComponent(position: Vector2(650, 40));
-    timeText = TextComponent(position: Vector2(20, 40));
+    scoreText = TextComponent(
+        position: Vector2(650, 40),
+        textRenderer: TextPaint(
+            style: const TextStyle(fontFamily: 'Good Timing', fontSize: 25)));
+    timeText = TextComponent(
+        position: Vector2(20, 40),
+        textRenderer: TextPaint(
+            style: const TextStyle(fontFamily: 'Good Timing', fontSize: 25)));
     add(scoreText);
     add(timeText);
     countDown = Timer(1, onTick: () {

@@ -100,16 +100,10 @@ class OpeningScreen extends StatelessWidget {
                 ),
                 child: const Expanded(
                     child: Text(
-                  "In this game, there are 2 levels. The first level has a question and "
-                  "answer section, as well as a minigame. The second section "
-                  "has a harder question and answer section compared to the first level. "
-                  "In each level, the goal is to obtain as many points as possible "
-                  "by answering questions correctly, and playing the minigame. A minimum "
-                  "of 100 points must be achieved to successfully obtain the key to "
-                  "escape the prison.",
+                  "There are 2 levels. Level 1 has riddles and a minigame. Level 2 has harder riddles. In each level, try to obtain as many points as possible by answering correctly, and dodging lasers in the minigame. Atleast 100 points must be earned to escape.",
                   style: TextStyle(
                       fontFamily: "Good Timing",
-                      fontSize: 15,
+                      fontSize: 20,
                       color: Colors.white),
                   softWrap: true,
                   overflow: TextOverflow.visible,

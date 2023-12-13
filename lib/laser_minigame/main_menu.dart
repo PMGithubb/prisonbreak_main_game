@@ -33,18 +33,20 @@ class MainMenu extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 50,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 255, 255, 255)),
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              fontFamily: "Eordeoghlakat"),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(30.0),
                         child: Text(
-                          "Got out of prison, but the guards saw you. Dodge their lasers while getting to the other side to keep the maximum number of points!",
+                          "You got out of prison, but the guards saw. Dodge their lasers while getting to the other side to keep the maximum number of points!",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
-                              color: Color.fromARGB(255, 255, 255, 255)),
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              fontFamily: "Good Timing"),
                         ),
                       ),
                     ],
@@ -61,7 +63,7 @@ class MainMenu extends StatelessWidget {
                   padding: EdgeInsets.all(20.0),
                   child: Text(
                     'Play',
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 25, fontFamily: "Eordeoghlakat"),
                   ),
                 ),
               ),

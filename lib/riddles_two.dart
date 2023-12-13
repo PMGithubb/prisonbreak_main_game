@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prisonbreak_main_game/laser_minigame/main_menu.dart';
+import 'package:prisonbreak_main_game/main.dart';
 
 // class MyApp extends StatelessWidget {
 //   const MyApp({super.key});
@@ -12,50 +12,49 @@ import 'package:prisonbreak_main_game/laser_minigame/main_menu.dart';
 //   }
 // }
 
-class GamePageView extends StatelessWidget {
-  const GamePageView({super.key});
+class GamePageViewTwo extends StatelessWidget {
+  const GamePageViewTwo({super.key});
 
   @override
   Widget build(BuildContext context) {
     return PageView(
       children: [
         GameScreen(
-          backgroundImage: 'assets/images/initial_cell.png',
+          backgroundImage:
+              'assets/images/prison_yard.png', // Replace with the path to your new background image
           characterImage: 'assets/images/sprite_final.png',
           scrollImage: 'assets/images/scroll.png',
           questions: [
             Question(
-              question: "What has many keys but can't unlock a single door?",
-              options: ['Piano', 'Jailor', 'Handcuffs', 'Map'],
-              correctAnswer: 0,
-            ),
-            Question(
-              question: "I am made of bars, yet I'm not a prison. What am I?",
-              options: ['Playground', 'Chocolate Bar', 'Jail Cell', 'Bicycle'],
-              correctAnswer: 1,
-            ),
-            Question(
-              question: "I can be cracked, made, told, and played. What am I?",
-              options: ['Joke', 'Prison Guard', 'Riddle', 'Code'],
-              correctAnswer: 2,
-            ),
-            Question(
               question:
-                  "What comes once in a minute, twice in a moment, but never in a thousand years?",
-              options: [
-                'The word "escape"',
-                'The letter "M"',
-                'Prison Sentence',
-                'Prison Break'
-              ],
+                  "I'm a place with walls so thick, where inmates stay so quiet, so quick. Bars surround, but no keys in sight, In the day I'm filled with light. What am I?",
+              options: ['Library', 'Prison', 'Classroom', 'Courtyard'],
               correctAnswer: 1,
             ),
             Question(
               question:
-                  "I can fly without wings, cry without eyes. Wherever I go, darkness dies, What am I?",
-              options: ['A Bat', 'A Bird', 'A Flashlight', 'A Jail Break Plan'],
+                  "I have teeth but never eat, Iron bars, a grim retreat. No windows here, just solitude, Inside my walls, no gratitude. What am I?",
+              options: ['Dungeon', 'Cafeteria', 'Jail', 'Museum'],
               correctAnswer: 2,
-            )
+            ),
+            Question(
+              question:
+                  "Tick tock, goes the clock, Serving time, a heavy dock. In stripes or orange, I am found, In my grasp, freedom's bound. What am I?",
+              options: ['Clock', 'Calendar', 'Watchtower', 'Inmate'],
+              correctAnswer: 3,
+            ),
+            Question(
+              question:
+                  "I stand tall with bars of steel, Watchful eyes, my purpose real. In the night or morning light, I keep watch, out of sight. What am I?",
+              options: ['Sentry', 'Guard Tower', 'Warden', 'Fence'],
+              correctAnswer: 1,
+            ),
+            Question(
+              question:
+                  "Wake up, eat, and then back in, A routine life within. Courtyard, cells, and metal bed, Where am I, its often said. What am I?",
+              options: ['Home', 'Prison Yard', 'School', 'Park'],
+              correctAnswer: 1,
+            ),
           ],
         ),
         // Add more GameScreen pages as needed
@@ -79,10 +78,10 @@ class GameScreen extends StatefulWidget {
   });
 
   @override
-  GameScreenState createState() => GameScreenState();
+  _GameScreenState createState() => _GameScreenState();
 }
 
-class GameScreenState extends State<GameScreen> {
+class _GameScreenState extends State<GameScreen> {
   int currentQuestionIndex = 0;
   int game_score = 0;
 
@@ -193,9 +192,9 @@ class GameScreenState extends State<GameScreen> {
           top: 30,
           left: 80,
           child: Text(
-            "LEVEL 1",
+            "LEVEL 2",
             style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: Color.fromARGB(255, 255, 255, 255),
                 fontSize: 30,
                 fontFamily: "Eordeoghlakat",
                 backgroundColor: Color.fromARGB(0, 0, 0, 0),
@@ -208,7 +207,7 @@ class GameScreenState extends State<GameScreen> {
           child: Text(
             "Score: $game_score",
             style: const TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: Colors.white,
                 fontSize: 20,
                 fontFamily: "Good Timing",
                 backgroundColor: Color.fromARGB(0, 0, 0, 0),
@@ -222,17 +221,13 @@ class GameScreenState extends State<GameScreen> {
   Color _getOptionColor(int index) {
     if (widget.questions[currentQuestionIndex].userAnswer == index) {
       if (widget.questions[currentQuestionIndex].isCorrect) {
-        game_score += 10;
+        game_score += 20;
         return Colors.green;
       } else {
         return Colors.red;
       }
     }
     return Colors.white;
-  }
-
-  int getScore() {
-    return game_score;
   }
 
   void checkAnswer(int selectedOption) {
@@ -253,9 +248,13 @@ class GameScreenState extends State<GameScreen> {
           } else {
             // Game Over or show a congratulatory message
             // You can navigate to a new screen or reset the game as per your requirement
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const MainMenu(),
-            ));
+            if (game_score < 200) {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => failureClosingScreen()));
+            } else {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => successClosingScreen()));
+            }
           }
         });
       });

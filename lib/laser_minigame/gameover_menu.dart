@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/laser_minigame/laser_game.dart';
 import 'package:prisonbreak_main_game/laser_minigame/main_menu.dart';
-import 'package:prisonbreak_main_game/main.dart';
+import 'package:prisonbreak_main_game/riddles_two.dart';
 
 class GameOverMenu extends StatelessWidget {
   static const String ID = 'GameOverMenu';
@@ -32,25 +32,28 @@ class GameOverMenu extends StatelessWidget {
                         "Game Over",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 50,
+                            fontSize: 60,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 255, 255, 255)),
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: "Eordeoghlakat"),
                       ),
                       Text(
                         gameRef.getScore(),
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                            fontSize: 30,
+                            fontSize: 25,
                             fontWeight: FontWeight.normal,
-                            color: Color.fromARGB(255, 255, 255, 255)),
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: "Good Timing"),
                       ),
                       Text(
                         "Highest score: ${gameRef.getHighScore()}",
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                            fontSize: 30,
+                            fontSize: 25,
                             fontWeight: FontWeight.normal,
-                            color: Color.fromARGB(255, 255, 255, 255)),
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: "Good Timing"),
                       )
                     ])),
                 Row(
@@ -86,7 +89,7 @@ class GameOverMenu extends StatelessWidget {
                             gameRef.overlays.remove(GameOverMenu.ID);
                             Navigator.of(context)
                                 .pushReplacement(MaterialPageRoute(
-                              builder: (context) => successClosingScreen(),
+                              builder: (context) => const GamePageViewTwo(),
                             ));
                           },
                           style: ElevatedButton.styleFrom(
