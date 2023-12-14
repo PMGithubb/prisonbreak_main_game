@@ -116,27 +116,13 @@ class OpeningScreen extends StatelessWidget {
 }
 
 class successClosingScreen extends StatelessWidget {
+  final int score;
+  const successClosingScreen({Key? key, required this.score}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
         Center(child: Image.asset("assets/images/escape_success.jpg")),
-        Align(
-            alignment: Alignment.bottomRight,
-            child: SizedBox(
-                width: 130,
-                height: 130,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => failureClosingScreen()));
-                  },
-                  child: Image.asset(
-                    "assets/images/square_buttons/NextSquareButton.png",
-                  ),
-                ))),
         Positioned(
             right: 310,
             top: 150,
@@ -157,7 +143,7 @@ class successClosingScreen extends StatelessWidget {
                     fontFamily: "Good Timing",
                     fontSize: 40,
                     color: Colors.white),
-                "Score: $points")),
+                "Score: $score")),
         const Positioned(
             right: 120,
             top: 50,
@@ -172,6 +158,8 @@ class successClosingScreen extends StatelessWidget {
 }
 
 class failureClosingScreen extends StatelessWidget {
+  final int score;
+  const failureClosingScreen({Key? key, required this.score}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,7 +171,7 @@ class failureClosingScreen extends StatelessWidget {
                     fontFamily: "Good Timing",
                     fontSize: 40,
                     color: Colors.black),
-                "Points: $points")),
+                "Points: $score")),
         const Align(
           alignment: Alignment.topCenter,
           child: Text("Try Again..",

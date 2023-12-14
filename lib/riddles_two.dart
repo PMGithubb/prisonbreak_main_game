@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prisonbreak_main_game/main.dart';
+import 'package:prisonbreak_main_game/summary_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // class MyApp extends StatelessWidget {
 //   const MyApp({super.key});
@@ -222,12 +223,19 @@ class _GameScreenState extends State<GameScreen> {
     if (widget.questions[currentQuestionIndex].userAnswer == index) {
       if (widget.questions[currentQuestionIndex].isCorrect) {
         game_score += 20;
+        saveScore(game_score);
         return Colors.green;
       } else {
+        saveScore(game_score);
         return Colors.red;
       }
     }
     return Colors.white;
+  }
+
+  Future<void> saveScore(gameScore) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt("levelTwoScore", gameScore);
   }
 
   void checkAnswer(int selectedOption) {
@@ -248,13 +256,8 @@ class _GameScreenState extends State<GameScreen> {
           } else {
             // Game Over or show a congratulatory message
             // You can navigate to a new screen or reset the game as per your requirement
-            if (game_score < 200) {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => failureClosingScreen()));
-            } else {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => successClosingScreen()));
-            }
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => SummaryScreen()));
           }
         });
       });

@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/laser_minigame/main_menu.dart';
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const MaterialApp(
-//       home: GamePageView(),
-//     );
-//   }
-// }
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GamePageView extends StatelessWidget {
   const GamePageView({super.key});
@@ -223,12 +213,19 @@ class GameScreenState extends State<GameScreen> {
     if (widget.questions[currentQuestionIndex].userAnswer == index) {
       if (widget.questions[currentQuestionIndex].isCorrect) {
         game_score += 10;
+        saveScore(game_score);
         return Colors.green;
       } else {
+        saveScore(game_score);
         return Colors.red;
       }
     }
     return Colors.white;
+  }
+
+  Future<void> saveScore(gameScore) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt("levelOneScore", gameScore);
   }
 
   int getScore() {
