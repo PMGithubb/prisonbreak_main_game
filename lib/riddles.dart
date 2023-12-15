@@ -248,6 +248,9 @@ class GameScreenState extends State<GameScreen> {
           if (currentQuestionIndex < widget.questions.length - 1) {
             currentQuestionIndex++;
           } else {
+            if (widget.questions[currentQuestionIndex].isCorrect == true) {
+              game_score -= 10;
+            }
             // Game Over or show a congratulatory message
             // You can navigate to a new screen or reset the game as per your requirement
             Navigator.of(context).pushReplacement(MaterialPageRoute(

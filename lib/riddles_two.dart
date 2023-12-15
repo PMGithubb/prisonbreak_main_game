@@ -244,6 +244,10 @@ class _GameScreenState extends State<GameScreen> {
       if (selectedOption ==
           widget.questions[currentQuestionIndex].correctAnswer) {
         widget.questions[currentQuestionIndex].isCorrect = true;
+      } else if (selectedOption ==
+              widget.questions[currentQuestionIndex].correctAnswer &&
+          currentQuestionIndex == widget.questions.length - 2) {
+        widget.questions[currentQuestionIndex].lastAnswer = true;
       } else {
         widget.questions[currentQuestionIndex].isCorrect = false;
       }
@@ -254,6 +258,9 @@ class _GameScreenState extends State<GameScreen> {
           if (currentQuestionIndex < widget.questions.length - 1) {
             currentQuestionIndex++;
           } else {
+            if (widget.questions[currentQuestionIndex].lastAnswer == true) {
+              game_score -= 20;
+            }
             // Game Over or show a congratulatory message
             // You can navigate to a new screen or reset the game as per your requirement
             Navigator.of(context).pushReplacement(
@@ -271,6 +278,7 @@ class Question {
   final int correctAnswer;
   int userAnswer;
   bool isCorrect;
+  bool lastAnswer;
 
   Question({
     required this.question,
@@ -278,5 +286,6 @@ class Question {
     required this.correctAnswer,
     this.userAnswer = -1,
     this.isCorrect = false,
+    this.lastAnswer = false,
   });
 }

@@ -65,7 +65,7 @@ class SummaryScreen extends StatelessWidget {
                                         top: 15.0,
                                         left: 30.0,
                                         right: 30.0,
-                                        bottom: 10.0),
+                                        bottom: 5.0),
                                     child: Text(
                                       "Level 1 Riddles: ${prefs.getInt('levelOneScore')}",
                                       textAlign: TextAlign.center,
@@ -82,7 +82,7 @@ class SummaryScreen extends StatelessWidget {
                                         top: 5.0,
                                         left: 30.0,
                                         right: 30.0,
-                                        bottom: 10.0),
+                                        bottom: 5.0),
                                     child: Text(
                                       "Laser Minigame: ${prefs.getInt('highScore')}",
                                       textAlign: TextAlign.center,
@@ -99,7 +99,7 @@ class SummaryScreen extends StatelessWidget {
                                         top: 5.0,
                                         left: 30.0,
                                         right: 30.0,
-                                        bottom: 10.0),
+                                        bottom: 5.0),
                                     child: Text(
                                       "Level 2 Riddles: ${prefs.getInt('levelTwoScore')}",
                                       textAlign: TextAlign.center,
@@ -116,9 +116,26 @@ class SummaryScreen extends StatelessWidget {
                                         top: 5.0,
                                         left: 30.0,
                                         right: 30.0,
-                                        bottom: 10.0),
+                                        bottom: 5.0),
                                     child: Text(
-                                      "Total Score: ${prefs.getInt("totalScore")}",
+                                      "Total Score: ${prefs.getInt("totalScore")} / 250",
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255),
+                                          fontFamily: "Good Timing"),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 5.0,
+                                        left: 30.0,
+                                        right: 30.0,
+                                        bottom: 5.0),
+                                    child: Text(
+                                      "Percent achieved: ${((prefs.getInt("totalScore") ?? 0.toDouble()) / (250.0)) * 100.0}%",
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                           fontSize: 20,
