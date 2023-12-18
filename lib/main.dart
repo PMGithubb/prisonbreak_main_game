@@ -98,8 +98,7 @@ class OpeningScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.black.withOpacity(0.5),
                 ),
-                child: const Expanded(
-                    child: Text(
+                child: const Text(
                   "There are 2 levels. Level 1 has riddles and a minigame. Level 2 has harder riddles. In each level, try to obtain as many points as possible by answering correctly, and dodging lasers in the minigame. Atleast 100 points must be earned to escape.",
                   style: TextStyle(
                       fontFamily: "Good Timing",
@@ -107,7 +106,7 @@ class OpeningScreen extends StatelessWidget {
                       color: Colors.white),
                   softWrap: true,
                   overflow: TextOverflow.visible,
-                )))),
+                ))),
         const Positioned(
             right: 535, top: 100, child: Text("I need to get that key..."))
       ]),
