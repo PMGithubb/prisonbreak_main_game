@@ -101,7 +101,7 @@ class SummaryScreen extends StatelessWidget {
                                         right: 30.0,
                                         bottom: 5.0),
                                     child: Text(
-                                      "Level 2 Riddles: ${prefs.getInt('levelTwoScore')} / 100",
+                                      "Level 2 Riddles: ${prefs.getInt('levelTwoScore') ?? 0} / 100",
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                           fontSize: 20,
