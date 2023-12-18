@@ -67,7 +67,7 @@ class SummaryScreen extends StatelessWidget {
                                         right: 30.0,
                                         bottom: 5.0),
                                     child: Text(
-                                      "Level 1 Riddles: ${prefs.getInt('levelOneScore')}",
+                                      "Level 1 Riddles: ${prefs.getInt('levelOneScore')} / 50",
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                           fontSize: 20,
@@ -84,7 +84,7 @@ class SummaryScreen extends StatelessWidget {
                                         right: 30.0,
                                         bottom: 5.0),
                                     child: Text(
-                                      "Laser Minigame: ${prefs.getInt('highScore')}",
+                                      "Laser Minigame: ${prefs.getInt('highScore')} / 100",
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                           fontSize: 20,
@@ -101,7 +101,7 @@ class SummaryScreen extends StatelessWidget {
                                         right: 30.0,
                                         bottom: 5.0),
                                     child: Text(
-                                      "Level 2 Riddles: ${prefs.getInt('levelTwoScore')}",
+                                      "Level 2 Riddles: ${prefs.getInt('levelTwoScore')} / 100",
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                           fontSize: 20,

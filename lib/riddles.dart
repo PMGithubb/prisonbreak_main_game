@@ -250,6 +250,7 @@ class GameScreenState extends State<GameScreen> {
           } else {
             if (widget.questions[currentQuestionIndex].isCorrect == true) {
               game_score -= 10;
+              saveScore(game_score);
             }
             // Game Over or show a congratulatory message
             // You can navigate to a new screen or reset the game as per your requirement
