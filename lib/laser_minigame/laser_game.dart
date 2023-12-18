@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'player.dart';
 import 'laser.dart';
 import 'background.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 class LaserGame extends FlameGame with HasCollisionDetection {
   late Background background;
@@ -23,6 +24,8 @@ class LaserGame extends FlameGame with HasCollisionDetection {
 
   @override
   Future<void> onLoad() async {
+    FlameAudio.bgm.initialize();
+    FlameAudio.bgm.play("background_music.mp3");
     add(background = Background(sprite: await loadSprite('prison_yard.png')));
     add(player = Player(sprite: await loadSprite('sprite_final.png')));
     add(laser = Laser(sprite: await loadSprite('laser.png')));
@@ -76,6 +79,7 @@ class LaserGame extends FlameGame with HasCollisionDetection {
 
   void decreaseScore() {
     score -= 10;
+    FlameAudio.play("laser_hit.mp3");
   }
 
   String getScore() {

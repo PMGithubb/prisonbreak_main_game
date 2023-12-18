@@ -1,3 +1,4 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -160,6 +161,8 @@ class SummaryScreen extends StatelessWidget {
                                               score: total_score,
                                             )));
                               } else {
+                                FlameAudio.bgm.dispose();
+                                FlameAudio.play("success_closing_screen.mp3");
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                         builder: (context) =>

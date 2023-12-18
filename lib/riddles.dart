@@ -1,3 +1,4 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/laser_minigame/main_menu.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -234,9 +235,11 @@ class GameScreenState extends State<GameScreen> {
       widget.questions[currentQuestionIndex].userAnswer = selectedOption;
       if (selectedOption ==
           widget.questions[currentQuestionIndex].correctAnswer) {
+        FlameAudio.play("correct_answer.mp3");
         widget.questions[currentQuestionIndex].isCorrect = true;
         game_score += 10;
       } else {
+        FlameAudio.play("wrong_answer.mp3");
         widget.questions[currentQuestionIndex].isCorrect = false;
       }
       saveScore(game_score);
@@ -247,6 +250,7 @@ class GameScreenState extends State<GameScreen> {
           if (currentQuestionIndex < widget.questions.length - 1) {
             currentQuestionIndex++;
           } else {
+            FlameAudio.play("oh_no_screen.mp3");
             // Game Over or show a congratulatory message
             // You can navigate to a new screen or reset the game as per your requirement
             Navigator.of(context).pushReplacement(MaterialPageRoute(

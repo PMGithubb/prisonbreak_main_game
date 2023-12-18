@@ -1,3 +1,4 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/summary_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -241,8 +242,10 @@ class _GameScreenState extends State<GameScreen> {
       if (selectedOption ==
           widget.questions[currentQuestionIndex].correctAnswer) {
         widget.questions[currentQuestionIndex].isCorrect = true;
+        FlameAudio.play("correct_answer.mp3");
         game_score += 20;
       } else {
+        FlameAudio.play("wrong_answer.mp3");
         widget.questions[currentQuestionIndex].isCorrect = false;
       }
       saveScore(game_score);
