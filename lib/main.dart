@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/riddles.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MaterialApp(
     home: MyApp(),
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
             width: 1000,
           )),
           Positioned(
-            right: 250,
+            right: 320,
             top: 200,
             child: SizedBox(
               width: 300,
@@ -34,6 +35,22 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
+          Positioned(
+            right: 150,
+            top: 200,
+            child: SizedBox(
+              width: 300,
+              height: 100,
+              child: GestureDetector(
+                onTap: () {
+                  launchURL();
+                },
+                child: Image.asset(
+                  'assets/images/square_buttons/InfoSquareButton.png',
+                ),
+              ),
+            ),
+          ),
           const Positioned(
               right: 150,
               top: 50,
@@ -45,6 +62,13 @@ class MyApp extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+launchURL() async {
+  final Uri url = Uri.parse('https://flutter.dev');
+  if (!await launchUrl(url)) {
+    throw Exception('Could not launch $url');
   }
 }
 
