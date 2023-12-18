@@ -30,7 +30,7 @@ class LaserGame extends FlameGame with HasCollisionDetection {
     prefs = await SharedPreferences.getInstance();
     //prefs.setInt("highScore", 0);
     scoreText = TextComponent(
-        position: Vector2(650, 40),
+        position: Vector2(550, 40),
         textRenderer: TextPaint(
             style: const TextStyle(fontFamily: 'Good Timing', fontSize: 25)));
     timeText = TextComponent(

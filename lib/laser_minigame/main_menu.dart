@@ -26,7 +26,7 @@ class MainMenu extends StatelessWidget {
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 50, left: 40, right: 40),
+                        padding: EdgeInsets.only(top: 20, left: 40, right: 40),
                         child: Text(
                           "Oh no!",
                           textAlign: TextAlign.center,

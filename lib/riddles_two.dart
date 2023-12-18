@@ -144,7 +144,7 @@ class _GameScreenState extends State<GameScreen> {
                       child: Text(
                         widget.questions[currentQuestionIndex].question,
                         style: const TextStyle(
-                          fontSize: 17,
+                          fontSize: 15,
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Good Timing',
                           color: Colors.black,
@@ -178,7 +178,7 @@ class _GameScreenState extends State<GameScreen> {
                                 widget.questions[currentQuestionIndex]
                                     .options[index],
                                 style: const TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     fontFamily: "Good Timing",
                                     color: Color.fromARGB(255, 0, 0, 0))),
                           )),
@@ -222,11 +222,8 @@ class _GameScreenState extends State<GameScreen> {
   Color _getOptionColor(int index) {
     if (widget.questions[currentQuestionIndex].userAnswer == index) {
       if (widget.questions[currentQuestionIndex].isCorrect) {
-        game_score += 20;
-        saveScore(game_score);
         return Colors.green;
       } else {
-        saveScore(game_score);
         return Colors.red;
       }
     }
@@ -244,13 +241,11 @@ class _GameScreenState extends State<GameScreen> {
       if (selectedOption ==
           widget.questions[currentQuestionIndex].correctAnswer) {
         widget.questions[currentQuestionIndex].isCorrect = true;
-      } else if (selectedOption ==
-              widget.questions[currentQuestionIndex].correctAnswer &&
-          currentQuestionIndex == widget.questions.length - 2) {
-        widget.questions[currentQuestionIndex].lastAnswer = true;
+        game_score += 20;
       } else {
         widget.questions[currentQuestionIndex].isCorrect = false;
       }
+      saveScore(game_score);
 
       Future.delayed(const Duration(seconds: 1), () {
         setState(() {
@@ -258,10 +253,6 @@ class _GameScreenState extends State<GameScreen> {
           if (currentQuestionIndex < widget.questions.length - 1) {
             currentQuestionIndex++;
           } else {
-            if (widget.questions[currentQuestionIndex].lastAnswer == true) {
-              game_score -= 20;
-              saveScore(game_score);
-            }
             // Game Over or show a congratulatory message
             // You can navigate to a new screen or reset the game as per your requirement
             Navigator.of(context).pushReplacement(
@@ -279,7 +270,6 @@ class Question {
   final int correctAnswer;
   int userAnswer;
   bool isCorrect;
-  bool lastAnswer;
 
   Question({
     required this.question,
@@ -287,6 +277,5 @@ class Question {
     required this.correctAnswer,
     this.userAnswer = -1,
     this.isCorrect = false,
-    this.lastAnswer = false,
   });
 }

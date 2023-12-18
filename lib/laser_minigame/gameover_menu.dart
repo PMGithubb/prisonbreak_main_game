@@ -26,7 +26,7 @@ class GameOverMenu extends StatelessWidget {
               children: [
                 Padding(
                     padding: const EdgeInsets.only(
-                        top: 50, left: 40, right: 40, bottom: 10),
+                        top: 20, left: 40, right: 40, bottom: 10),
                     child: Column(children: [
                       const Text(
                         "Game Over",

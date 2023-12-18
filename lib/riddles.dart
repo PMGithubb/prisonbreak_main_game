@@ -212,11 +212,8 @@ class GameScreenState extends State<GameScreen> {
   Color _getOptionColor(int index) {
     if (widget.questions[currentQuestionIndex].userAnswer == index) {
       if (widget.questions[currentQuestionIndex].isCorrect) {
-        game_score += 10;
-        saveScore(game_score);
         return Colors.green;
       } else {
-        saveScore(game_score);
         return Colors.red;
       }
     }
@@ -238,9 +235,11 @@ class GameScreenState extends State<GameScreen> {
       if (selectedOption ==
           widget.questions[currentQuestionIndex].correctAnswer) {
         widget.questions[currentQuestionIndex].isCorrect = true;
+        game_score += 10;
       } else {
         widget.questions[currentQuestionIndex].isCorrect = false;
       }
+      saveScore(game_score);
 
       Future.delayed(const Duration(seconds: 1), () {
         setState(() {
@@ -248,10 +247,6 @@ class GameScreenState extends State<GameScreen> {
           if (currentQuestionIndex < widget.questions.length - 1) {
             currentQuestionIndex++;
           } else {
-            if (widget.questions[currentQuestionIndex].isCorrect == true) {
-              game_score -= 10;
-              saveScore(game_score);
-            }
             // Game Over or show a congratulatory message
             // You can navigate to a new screen or reset the game as per your requirement
             Navigator.of(context).pushReplacement(MaterialPageRoute(
