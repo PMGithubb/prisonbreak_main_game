@@ -161,7 +161,6 @@ class SummaryScreen extends StatelessWidget {
                                               score: total_score,
                                             )));
                               } else {
-                                FlameAudio.bgm.dispose();
                                 FlameAudio.play("success_closing_screen.mp3");
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(

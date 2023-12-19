@@ -200,9 +200,7 @@ class failureClosingScreen extends StatelessWidget {
           child: Text("Try Again..",
               style: TextStyle(fontFamily: "Eordeoghlakat", fontSize: 100)),
         ),
-        Positioned(
-            right: 170,
-            top: 330,
+        Align(
             child: SizedBox(
                 width: 120,
                 height: 120,
