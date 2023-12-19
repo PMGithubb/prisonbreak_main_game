@@ -236,16 +236,23 @@ class _GameScreenState extends State<GameScreen> {
     prefs.setInt("levelTwoScore", gameScore);
   }
 
+  Future<void> play_music(file_name) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool("music") ?? true) {
+      FlameAudio.play(file_name);
+    }
+  }
+
   void checkAnswer(int selectedOption) {
     setState(() {
       widget.questions[currentQuestionIndex].userAnswer = selectedOption;
       if (selectedOption ==
           widget.questions[currentQuestionIndex].correctAnswer) {
         widget.questions[currentQuestionIndex].isCorrect = true;
-        FlameAudio.play("correct_answer.mp3");
+        play_music("correct_answer.mp3");
         game_score += 20;
       } else {
-        FlameAudio.play("wrong_answer.mp3");
+        play_music("wrong_answer.mp3");
         widget.questions[currentQuestionIndex].isCorrect = false;
       }
       saveScore(game_score);

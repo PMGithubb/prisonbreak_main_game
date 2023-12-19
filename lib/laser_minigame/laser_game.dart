@@ -25,12 +25,14 @@ class LaserGame extends FlameGame with HasCollisionDetection {
   @override
   Future<void> onLoad() async {
     FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play("background_music.mp3");
+    prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool("music") ?? true) {
+      FlameAudio.bgm.play("background_music.mp3");
+    }
     add(background = Background(sprite: await loadSprite('prison_yard.png')));
     add(player = Player(sprite: await loadSprite('sprite_final.png')));
     add(laser = Laser(sprite: await loadSprite('laser.png')));
     score = 100;
-    prefs = await SharedPreferences.getInstance();
     //prefs.setInt("highScore", 0);
     scoreText = TextComponent(
         position: Vector2(550, 40),
@@ -79,7 +81,9 @@ class LaserGame extends FlameGame with HasCollisionDetection {
 
   void decreaseScore() {
     score -= 10;
-    FlameAudio.play("laser_hit.mp3");
+    if (prefs.getBool("music") ?? true) {
+      FlameAudio.play("laser_hit.mp3");
+    }
   }
 
   String getScore() {

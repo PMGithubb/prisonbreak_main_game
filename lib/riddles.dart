@@ -226,6 +226,13 @@ class GameScreenState extends State<GameScreen> {
     prefs.setInt("levelOneScore", gameScore);
   }
 
+  Future<void> play_music(file_name) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool("music") ?? true) {
+      FlameAudio.play(file_name);
+    }
+  }
+
   int getScore() {
     return game_score;
   }
@@ -235,11 +242,11 @@ class GameScreenState extends State<GameScreen> {
       widget.questions[currentQuestionIndex].userAnswer = selectedOption;
       if (selectedOption ==
           widget.questions[currentQuestionIndex].correctAnswer) {
-        FlameAudio.play("correct_answer.mp3");
+        play_music("correct_answer.mp3");
         widget.questions[currentQuestionIndex].isCorrect = true;
         game_score += 10;
       } else {
-        FlameAudio.play("wrong_answer.mp3");
+        play_music("wrong_answer.mp3");
         widget.questions[currentQuestionIndex].isCorrect = false;
       }
       saveScore(game_score);
@@ -250,7 +257,7 @@ class GameScreenState extends State<GameScreen> {
           if (currentQuestionIndex < widget.questions.length - 1) {
             currentQuestionIndex++;
           } else {
-            FlameAudio.play("oh_no_screen.mp3");
+            play_music("oh_no_screen.mp3");
             // Game Over or show a congratulatory message
             // You can navigate to a new screen or reset the game as per your requirement
             Navigator.of(context).pushReplacement(MaterialPageRoute(

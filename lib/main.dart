@@ -1,67 +1,120 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:prisonbreak_main_game/riddles.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MaterialApp(
     home: MyApp(),
     theme: ThemeData(scaffoldBackgroundColor: const Color(0xFF5C339B))));
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
+  late SharedPreferences prefs;
+  MyApp({Key? key}) : super(key: key);
+
+  Future<void> getPrefs() async {
+    prefs = await SharedPreferences.getInstance();
+    prefs.setBool("music", true);
+    if (prefs.getBool("music") ?? true) {
+      FlameAudio.bgm.initialize();
+      FlameAudio.bgm.play("background_music.mp3");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Center(
-              child: Image.asset(
-            "assets/images/homescreen.jpg",
-            height: 1000,
-            width: 1000,
-          )),
-          Positioned(
-            right: 320,
-            top: 200,
-            child: SizedBox(
-              width: 300,
-              height: 100,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OpeningScreen()));
-                },
-                child: Image.asset(
-                  'assets/images/square_buttons/PlaySquareButton.png',
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            right: 150,
-            top: 200,
-            child: SizedBox(
-              width: 300,
-              height: 100,
-              child: GestureDetector(
-                onTap: () {
-                  launchURL();
-                },
-                child: Image.asset(
-                  'assets/images/square_buttons/InfoSquareButton.png',
-                ),
-              ),
-            ),
-          ),
-          const Positioned(
-              right: 150,
-              top: 50,
-              child: Text("Prison Escape",
-                  style: TextStyle(
-                      fontFamily: "Eordeoghlakat",
-                      fontSize: 100,
-                      color: Colors.white)))
-        ],
-      ),
-    );
+        body: Stack(children: [
+      Center(
+          child: Image.asset(
+        "assets/images/homescreen.jpg",
+        height: 1000,
+        width: 1000,
+      )),
+      FutureBuilder(
+          future: getPrefs(),
+          builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return Stack(children: [
+                Column(
+                  children: [
+                    const Padding(
+                        padding: EdgeInsets.only(
+                            top: 50, right: 10, left: 10, bottom: 10),
+                        child: Text("Prison Escape",
+                            style: TextStyle(
+                                fontFamily: "Eordeoghlakat",
+                                fontSize: 100,
+                                color: Colors.white))),
+                    Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: SizedBox(
+                        height: 80,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => OpeningScreen()));
+                          },
+                          child: Image.asset(
+                            'assets/images/square_buttons/PlaySquareButton.png',
+                          ),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: SizedBox(
+                            height: 70,
+                            child: GestureDetector(
+                              onTap: () {
+                                launchURL();
+                              },
+                              child: Image.asset(
+                                'assets/images/square_buttons/InfoSquareButton.png',
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: SizedBox(
+                            height: 70,
+                            child: GestureDetector(
+                              onTap: () {
+                                if (prefs.getBool("music") == false) {
+                                  FlameAudio.bgm.play("background_music.mp3");
+                                  music_setting(true);
+                                } else {
+                                  FlameAudio.bgm.stop();
+                                  music_setting(false);
+                                }
+                              },
+                              child: Image.asset(
+                                  "assets/images/square_buttons/MusicSquareButton.png"),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                )
+              ]);
+            } else {
+              return const Text("");
+            }
+          })
+    ]));
+  }
+
+  Future<void> music_setting(input) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool("music", input);
   }
 }
 
@@ -123,7 +176,7 @@ class OpeningScreen extends StatelessWidget {
                   color: Colors.black.withOpacity(0.5),
                 ),
                 child: const Text(
-                  "There are 2 levels. Level 1 has riddles and a minigame. Level 2 has harder riddles. In each level, try to obtain as many points as possible by answering correctly, and dodging lasers in the minigame. Atleast 100 points must be earned to escape.",
+                  "There are 2 levels. Level 1 has riddles and a minigame. Level 2 has harder riddles. In each level, try to obtain as many points as possible by answering correctly, and dodging lasers in the minigame. Atleast 200 points must be earned to escape.",
                   style: TextStyle(
                       fontFamily: "Good Timing",
                       fontSize: 20,

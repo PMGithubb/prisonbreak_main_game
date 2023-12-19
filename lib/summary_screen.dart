@@ -8,11 +8,6 @@ class SummaryScreen extends StatelessWidget {
   late SharedPreferences prefs;
   SummaryScreen({Key? key}) : super(key: key);
 
-  // Future<void> getPrefs() async {
-  //   SharedPreferences p = await SharedPreferences.getInstance();
-  //   prefs = p;
-  // }
-
   Future<void> getPrefs() async {
     prefs = await SharedPreferences.getInstance();
     totalScore();
@@ -161,7 +156,9 @@ class SummaryScreen extends StatelessWidget {
                                               score: total_score,
                                             )));
                               } else {
-                                FlameAudio.play("success_closing_screen.mp3");
+                                if (prefs.getBool("music") ?? true) {
+                                  FlameAudio.play("success_closing_screen.mp3");
+                                }
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                         builder: (context) =>
