@@ -119,7 +119,8 @@ class MyApp extends StatelessWidget {
 }
 
 launchURL() async {
-  final Uri url = Uri.parse('https://flutter.dev');
+  final Uri url =
+      Uri.parse('https://sites.google.com/view/prisonbreak-game?usp=sharing');
   if (!await launchUrl(url)) {
     throw Exception('Could not launch $url');
   }
@@ -180,12 +181,19 @@ class OpeningScreen extends StatelessWidget {
                   style: TextStyle(
                       fontFamily: "Good Timing",
                       fontSize: 20,
-                      color: Colors.white),
+                      color: Colors.white,
+                      fontWeight: FontWeight.w100),
                   softWrap: true,
                   overflow: TextOverflow.visible,
                 ))),
         const Positioned(
-            right: 535, top: 100, child: Text("I need to get that key..."))
+            right: 535,
+            top: 100,
+            child: Text(
+              "I need that key...",
+              style: TextStyle(
+                  fontFamily: 'Good Timing', fontWeight: FontWeight.w100),
+            ))
       ]),
     );
   }

@@ -37,11 +37,17 @@ class LaserGame extends FlameGame with HasCollisionDetection {
     scoreText = TextComponent(
         position: Vector2(550, 40),
         textRenderer: TextPaint(
-            style: const TextStyle(fontFamily: 'Good Timing', fontSize: 25)));
+            style: const TextStyle(
+                fontFamily: 'Good Timing',
+                fontSize: 25,
+                fontWeight: FontWeight.w100)));
     timeText = TextComponent(
         position: Vector2(20, 40),
         textRenderer: TextPaint(
-            style: const TextStyle(fontFamily: 'Good Timing', fontSize: 25)));
+            style: const TextStyle(
+                fontFamily: 'Good Timing',
+                fontSize: 25,
+                fontWeight: FontWeight.w100)));
     add(scoreText);
     add(timeText);
     countDown = Timer(1, onTick: () {

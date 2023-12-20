@@ -12,18 +12,20 @@ class PauseButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
-      child: TextButton(
-        child: const Icon(
-          Icons.pause_rounded,
-          color: Colors.white,
-          size: 20,
-        ),
-        onPressed: () {
-          gameRef.pauseEngine();
-          gameRef.overlays.add(PauseMenu.ID);
-          gameRef.overlays.remove(PauseButton.ID);
-        },
-      ),
+      child: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: TextButton(
+            child: const Icon(
+              Icons.pause_rounded,
+              color: Colors.white,
+              size: 30,
+            ),
+            onPressed: () {
+              gameRef.pauseEngine();
+              gameRef.overlays.add(PauseMenu.ID);
+              gameRef.overlays.remove(PauseButton.ID);
+            },
+          )),
     );
   }
 }
