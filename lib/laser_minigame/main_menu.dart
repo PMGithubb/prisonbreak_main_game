@@ -38,7 +38,7 @@ class MainMenu extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(30.0),
+                        padding: EdgeInsets.only(top: 0, right: 30, left: 30),
                         child: Text(
                           "You got out of prison, but the guards saw. Dodge their lasers while getting to the other side to keep the maximum number of points!",
                           textAlign: TextAlign.center,
@@ -67,7 +67,7 @@ class MainMenu extends StatelessWidget {
                     shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)))),
                 child: const Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(10.0),
                   child: Text(
                     'Play',
                     style: TextStyle(fontSize: 25, fontFamily: "Eordeoghlakat"),
