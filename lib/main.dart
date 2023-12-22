@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
                   children: [
                     const Padding(
                         padding: EdgeInsets.only(
-                            top: 50, right: 10, left: 10, bottom: 10),
+                            top: 20, right: 10, left: 10, bottom: 10),
                         child: Text("Prison Escape",
                             style: TextStyle(
                                 fontFamily: "Eordeoghlakat",
@@ -222,12 +222,15 @@ class successClosingScreen extends StatelessWidget {
                         "assets/images/square_buttons/ReturnSquareButton.png")))),
         Align(
             alignment: Alignment.topLeft,
-            child: Text(
-                style: const TextStyle(
-                    fontFamily: "Good Timing",
-                    fontSize: 40,
-                    color: Colors.white),
-                "Score: $score")),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 15.0, bottom: 10),
+              child: Text(
+                  style: const TextStyle(
+                      fontFamily: "Good Timing",
+                      fontSize: 40,
+                      color: Colors.white),
+                  "Score: $score"),
+            )),
         const Positioned(
             right: 120,
             top: 50,
@@ -250,12 +253,15 @@ class failureClosingScreen extends StatelessWidget {
       body: Column(children: [
         Align(
             alignment: Alignment.topLeft,
-            child: Text(
-                style: const TextStyle(
-                    fontFamily: "Good Timing",
-                    fontSize: 40,
-                    color: Colors.black),
-                "Points: $score")),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 15.0, bottom: 10),
+              child: Text(
+                  style: const TextStyle(
+                      fontFamily: "Good Timing",
+                      fontSize: 40,
+                      color: Colors.black),
+                  "Points: $score"),
+            )),
         const Align(
           alignment: Alignment.topCenter,
           child: Text("Try Again..",

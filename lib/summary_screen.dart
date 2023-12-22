@@ -44,7 +44,7 @@ class SummaryScreen extends StatelessWidget {
                                 children: [
                                   const Padding(
                                     padding: EdgeInsets.only(
-                                        top: 30, left: 40, right: 40),
+                                        top: 10, left: 40, right: 40),
                                     child: Text(
                                       "Score Summary:",
                                       textAlign: TextAlign.center,
@@ -58,10 +58,10 @@ class SummaryScreen extends StatelessWidget {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 15.0,
+                                        top: 5.0,
                                         left: 30.0,
                                         right: 30.0,
-                                        bottom: 5.0),
+                                        bottom: 3.0),
                                     child: Text(
                                       "Level 1 Riddles: ${prefs.getInt('levelOneScore')} / 50",
                                       textAlign: TextAlign.center,
@@ -78,7 +78,7 @@ class SummaryScreen extends StatelessWidget {
                                         top: 5.0,
                                         left: 30.0,
                                         right: 30.0,
-                                        bottom: 5.0),
+                                        bottom: 3.0),
                                     child: Text(
                                       "Laser Minigame: ${prefs.getInt('highScore')} / 100",
                                       textAlign: TextAlign.center,
@@ -95,7 +95,7 @@ class SummaryScreen extends StatelessWidget {
                                         top: 5.0,
                                         left: 30.0,
                                         right: 30.0,
-                                        bottom: 5.0),
+                                        bottom: 3.0),
                                     child: Text(
                                       "Level 2 Riddles: ${prefs.getInt('levelTwoScore') ?? 0} / 100",
                                       textAlign: TextAlign.center,
@@ -112,7 +112,7 @@ class SummaryScreen extends StatelessWidget {
                                         top: 5.0,
                                         left: 30.0,
                                         right: 30.0,
-                                        bottom: 5.0),
+                                        bottom: 3.0),
                                     child: Text(
                                       "Total Score: ${prefs.getInt("totalScore")} / 250",
                                       textAlign: TextAlign.center,
@@ -129,9 +129,9 @@ class SummaryScreen extends StatelessWidget {
                                         top: 5.0,
                                         left: 30.0,
                                         right: 30.0,
-                                        bottom: 5.0),
+                                        bottom: 3.0),
                                     child: Text(
-                                      "Percent achieved: ${((prefs.getInt("totalScore") ?? 0.toDouble()) / (250.0)) * 100.0}%",
+                                      "Percent achieved: ${(((prefs.getInt("totalScore") ?? 0.toDouble()) / (250.0)) * 100.0).toInt()}%",
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                           fontSize: 20,
@@ -167,10 +167,19 @@ class SummaryScreen extends StatelessWidget {
                                             )));
                               }
                             },
-                            style:
-                                const ButtonStyle(alignment: Alignment(0, 0)),
+                            style: ButtonStyle(
+                                alignment: const Alignment(0, 0),
+                                backgroundColor:
+                                    const MaterialStatePropertyAll(Colors.blue),
+                                foregroundColor: const MaterialStatePropertyAll(
+                                    Colors.white),
+                                shape: MaterialStatePropertyAll(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)))),
                             child: const Padding(
-                              padding: EdgeInsets.all(10.0),
+                              padding: EdgeInsets.only(
+                                  top: 5.0, right: 10, left: 10, bottom: 10),
                               child: Text(
                                 'NEXT',
                                 style: TextStyle(

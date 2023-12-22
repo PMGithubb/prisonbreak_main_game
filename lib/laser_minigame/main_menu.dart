@@ -58,7 +58,14 @@ class MainMenu extends StatelessWidget {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => const GamePlay()));
                 },
-                style: const ButtonStyle(alignment: Alignment(0, 0)),
+                style: ButtonStyle(
+                    alignment: const Alignment(0, 0),
+                    backgroundColor:
+                        const MaterialStatePropertyAll(Colors.blue),
+                    foregroundColor:
+                        const MaterialStatePropertyAll(Colors.white),
+                    shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)))),
                 child: const Padding(
                   padding: EdgeInsets.all(20.0),
                   child: Text(
